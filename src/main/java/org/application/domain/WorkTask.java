@@ -31,4 +31,21 @@ public class WorkTask extends BaseTask {
     public void setClient(String client) {
         this.client = client;
     }
+
+    @Override
+    public String toString() {
+        return (
+                "\n ***** PERSONAL TASK ***** \n" +
+                        "Task title: " + super.getTaskTitle() + "\n" +
+                        "Description: " + super.getTaskDescription() + "\n" +
+                        "Created at: " + super.getCreatedAt() + "\n" +
+                        "Update at: " + super.getUpdatedAt() + "\n" +
+                        "Status: " + super.getTaskStatus() + "\n" +
+                        "Due date: " + super.getDueDate() + "\n" +
+                        "Project: " + project + "\n" +
+                        "Client: " + client + "\n" +
+                        "UUID: " + super.getId() + "\n" +
+                        "*************************"
+        );
+    }
 }
