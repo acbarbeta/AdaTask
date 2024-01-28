@@ -1,5 +1,6 @@
 package org.application.domain;
 
+import org.application.domain.enums.TaskPriority;
 import org.application.domain.enums.TaskStatus;
 
 import java.time.LocalDateTime;
@@ -13,4 +14,5 @@ public class BaseTask {
     private LocalDateTime updatedAt;
     private TaskStatus taskStatus;
     private Date dueDate;
+    private TaskPriority taskPriority;
 }
