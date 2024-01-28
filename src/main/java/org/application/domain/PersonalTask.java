@@ -22,4 +22,20 @@ public class PersonalTask extends BaseTask {
     public void setCategory(PersonalTaskCategory category) {
         this.category = category;
     }
+
+    @Override
+    public String toString() {
+        return (
+                "\n ***** PERSONAL TASK ***** \n" +
+                        "Task title: " + super.getTaskTitle() + "\n" +
+                        "Description: " + super.getTaskDescription() + "\n" +
+                        "Created at: " + super.getCreatedAt() + "\n" +
+                        "Update at: " + super.getUpdatedAt() + "\n" +
+                        "Status: " + super.getTaskStatus() + "\n" +
+                        "Due date: " + super.getDueDate() + "\n" +
+                        "Category: " + category + "\n" +
+                        "UUID: " + super.getId() + "\n" +
+                        "*************************"
+        );
+    }
 }
