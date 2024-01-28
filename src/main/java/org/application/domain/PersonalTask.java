@@ -14,4 +14,12 @@ public class PersonalTask extends BaseTask {
         super(id, taskTitle, taskDescription, createdAt, updatedAt, taskStatus, dueDate, taskPriority);
         this.category = category;
     }
+
+    public PersonalTaskCategory getCategory() {
+        return category;
+    }
+
+    public void setCategory(PersonalTaskCategory category) {
+        this.category = category;
+    }
 }
