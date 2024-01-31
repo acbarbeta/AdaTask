@@ -10,7 +10,7 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Scanner;
 
-public class PersonalTaskController<T extends PersonalTask> {
+public class PersonalTaskController<T extends PersonalTask>  extends GeneralController{
     private TaskService<T, PersonalTask> service = new TaskService<>();
 
     public void personalTaskMenu() {
@@ -39,13 +39,13 @@ public class PersonalTaskController<T extends PersonalTask> {
                 createPersonalTask();
                 return true;
             case 2:
-                listAllPersonalTasks();
+                listAllTasks();
                 return true;
             case 3:
                 editPersonalTask();
                 return true;
             case 4:
-                deletePersonalTask();
+                deleteTask();
                 return true;
             default:
                 return false;
@@ -124,12 +124,14 @@ public class PersonalTaskController<T extends PersonalTask> {
         System.out.println("\n***** Personal task updated successfully! *****\n");
     }
 
-    public void listAllPersonalTasks(){
+    @Override
+    public void listAllTasks(){
         System.out.println("\n***** Personal Tasks *****\n");
         service.findAll();
     }
 
-    public void deletePersonalTask(){
+    @Override
+    public void deleteTask(){
         Scanner input = new Scanner(System.in);
         System.out.println("\n***** Delete existing personal task *****\n");
 
@@ -173,62 +175,8 @@ public class PersonalTaskController<T extends PersonalTask> {
         return category;
     }
 
-    public TaskStatus selectTaskStatus() {
-        Scanner input = new Scanner(System.in);
-
-        System.out.println("\nType the number of the task status: ");
-        System.out.println("1- Pending");
-        System.out.println("2- In Progress");
-        System.out.println("3- Done");
 
 
-        int option = input.nextInt();
-        TaskStatus status;
 
-        switch (option){
-            case 1:
-                status = TaskStatus.PENDING;
-                break;
-            case 2:
-                status = TaskStatus.IN_PROGRESS;
-                break;
-            case 3:
-                status = TaskStatus.DONE;
-                break;
-            default:
-                throw new IllegalArgumentException("Invalid option");
-        }
-        return status;
-    }
-
-    public TaskPriority selectTaskPriority() {
-        System.out.println("\nType the number of the category priority: \n");
-        System.out.println("1. LOW priority \n");
-        System.out.println("2. MEDIUM priority \n");
-        System.out.println("3. HIGH priority \n");
-        System.out.println("4. URGENT priority \n");
-
-        Scanner input = new Scanner(System.in);
-        int option = input.nextInt();
-        TaskPriority priority = null;
-
-        switch (option) {
-            case 1:
-                priority = TaskPriority.LOW;
-                break;
-            case 2:
-                priority = TaskPriority.MEDIUM;
-                break;
-            case 3:
-                priority = TaskPriority.HIGH;
-                break;
-            case 4:
-                priority = TaskPriority.URGENT;
-                break;
-            default:
-                throw new IllegalArgumentException("Invalid option");
-        }
-        return priority;
-    }
 
 }

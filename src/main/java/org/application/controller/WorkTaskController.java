@@ -10,7 +10,7 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Scanner;
 
-public class WorkTaskController<T extends WorkTask> {
+public class WorkTaskController<T extends WorkTask> extends GeneralController{
 
     private TaskService<T, WorkTask> service = new TaskService<>();
 
@@ -42,13 +42,13 @@ public class WorkTaskController<T extends WorkTask> {
                 createWorkTask();
                 return true;
             case 2:
-                listAllWorkTasks();
+                listAllTasks();
                 return true;
             case 3:
                 editWorkTask();
                 return true;
             case 4:
-                deleteWorkTask();
+                deleteTask();
                 return true;
             default:
                 return false;
@@ -134,12 +134,15 @@ public class WorkTaskController<T extends WorkTask> {
         System.out.println("\n***** Work task updated successfully! *****\n");
     }
 
-    public void listAllWorkTasks(){
+
+    @Override
+    public void listAllTasks() {
         System.out.println("\n***** Work Tasks *****\n");
         service.findAll();
     }
 
-    public void deleteWorkTask(){
+    @Override
+    public void deleteTask(){
         Scanner input = new Scanner(System.in);
         System.out.println("\n***** Delete existing work task *****\n");
 
@@ -148,65 +151,5 @@ public class WorkTaskController<T extends WorkTask> {
         T taskToDelete = service.findById(taskId);
         service.deleteTask(taskToDelete);
         System.out.println("\n***** Work task deleted successfully! *****\n");
-
-
-    }
-
-    public TaskPriority selectTaskPriority() {
-        System.out.println("Type: \n");
-        System.out.println("1. LOW priority \n");
-        System.out.println("2. MEDIUM priority \n");
-        System.out.println("3. HIGH priority \n");
-        System.out.println("4. URGENT priority \n");
-
-        Scanner input = new Scanner(System.in);
-        int option = input.nextInt();
-        TaskPriority priority = null;
-
-        switch (option) {
-            case 1:
-                priority = TaskPriority.LOW;
-                break;
-            case 2:
-                priority = TaskPriority.MEDIUM;
-                break;
-            case 3:
-                priority = TaskPriority.HIGH;
-                break;
-            case 4:
-                priority = TaskPriority.URGENT;
-                break;
-            default:
-                throw new IllegalArgumentException("Invalid option");
-        }
-        return priority;
-    }
-
-    public TaskStatus selectTaskStatus() {
-        Scanner input = new Scanner(System.in);
-
-        System.out.println("\nType the number of the task status: ");
-        System.out.println("1- Pending");
-        System.out.println("2- In Progress");
-        System.out.println("3- Done");
-
-
-        int option = input.nextInt();
-        TaskStatus status;
-
-        switch (option){
-            case 1:
-                status = TaskStatus.PENDING;
-                break;
-            case 2:
-                status = TaskStatus.IN_PROGRESS;
-                break;
-            case 3:
-                status = TaskStatus.DONE;
-                break;
-            default:
-                throw new IllegalArgumentException("Invalid option");
-        }
-        return status;
     }
 }
