@@ -7,11 +7,7 @@ import java.util.List;
 
 public class TaskService<T extends BaseTask, U> {
 
-    private final TaskRepository<T, U> taskRepository;
-
-    public TaskService(TaskRepository<T, U> taskRepository) {
-        this.taskRepository = taskRepository;
-    }
+    private final TaskRepository<T, U> taskRepository = new TaskRepository<>();
 
     public void createTask(T task) {
         taskRepository.createTask(task);
@@ -28,7 +24,7 @@ public class TaskService<T extends BaseTask, U> {
     public List<T> findAll() {
         List<T> tasks = taskRepository.findAll();
         for (T task : tasks) {
-            task.toString();
+            task.printTask();
         }
         return tasks;
     }
