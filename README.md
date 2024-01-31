@@ -58,5 +58,8 @@ AdaTask is currently in its first version. Looking ahead, several new features a
 - Database integration.
 - Test development.
 
+## 📈 [WIP] Class Diagram
+![First version of class diagram](ClassDiagramAdaTask_v01.jpg)
+
 ## 🙋🏻‍♀️ The Author
 Hi, I'm Ana Clara Barbeta, a Full Stack Developer based in São Paulo - SP, Brazil! I'm currently enrolled in the \<dev\>ª course offered by Ada Tech in partnership with B3. If you wish to get in touch, please view my [LinkedIn](https://www.linkedin.com/in/anaclara-barbeta/) profile or send an email to aclara.bvicente@gmail.com.
