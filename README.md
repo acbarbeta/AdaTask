@@ -8,8 +8,8 @@ This project was developed by me as a final module assignment for the **<dev>a**
 For this project, the IntelliJ IDE was used, along with the following languages and technologies:
 - Java 17.0.9;
 - Maven 3.9.4;
-- Make sure you have a Windows, Linux, or macOS machine;
-- Make sure you have read the project documentation.
+- Ensure that you have a Windows, Linux, or macOS machine;
+- Ensure that you have read the project documentation.
 
 ## 📚 Concepts learned
 - Generics
@@ -41,7 +41,14 @@ The application is organized into packages, including:
 4. **Data Persistence:** data simulation of a database is achieved using in-memory lists (ArrayList).
 
 ## ▶️ Getting Started
-
+1. Ensure that you satisfy all prerequisites before proceeding.
+2. Clone the repository onto your machine:
+     ```
+        git clone <repo_path>
+     ```  
+3. Open the project in an IDE (e.g., Eclipse, IntelliJ, VSCode).
+4. Navigate to the **`Main`** class and run it
+5. The application should now be started. Follow the on-screen instructions to interact with AdaTask.
 
 
 ## 🚩 Future Improvements
