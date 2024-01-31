@@ -5,10 +5,7 @@ import org.application.domain.enums.TaskStatus;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.util.Date;
 import java.util.UUID;
-
-// TODO: ver boas práticas de valor padrão para updatedAt no Java
 
 public class BaseTask {
     private String id = UUID.randomUUID().toString();

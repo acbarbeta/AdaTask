@@ -5,9 +5,6 @@ import org.application.domain.BaseTask;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.UUID;
-
-// TODO: melhorar textos printados
 
 public class TaskRepository<T extends BaseTask, S> implements Repository<T, S>{
     private List<T> tasks;

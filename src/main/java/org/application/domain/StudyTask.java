@@ -1,11 +1,8 @@
 package org.application.domain;
 
 import org.application.domain.enums.TaskPriority;
-import org.application.domain.enums.TaskStatus;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.util.Date;
 
 public class StudyTask extends BaseTask {
     private String subject;
