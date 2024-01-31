@@ -27,8 +27,22 @@ The application is organized into packages, including:
 - `Repository`: Responsible for the 'persistence' of data in lists, this component offers methods for adding, removing, updating, and searching tasks. It is important to note that the database is simulated using an ArrayList.
 - `Service`: Contains the application logic, including task handling operations, and interacts with the Repository layer to perform data operations.
 
-## Application flow
+## 🔁 Application flow
 1. **Application Initialization:** the *Main* class serves as the point of interaction between the user and the application. It presents a simple interface (**mainMenu()**), provided by the *controller*, allowing the user to choose the type of task they wish to manage: study, work, or personal.
+  
 2. **Action Selection:** after choosing the type of task to manage, the user is presented with a new interface that displays a menu of **possible actions to select**.
+  
 3. **Possible actions:**  
-3.1. aa
+3.1. **Create Task:** the user can create personal, work, or study tasks, based on the selection made in **mainMenu()**. Each type of task possesses its own specific attributes. For every task created, a UUID is generated, and the timestamps of creation and last modification are recorded in the **createdAt** and **updatedAt** fields, respectively."  
+3.2. **Edit Task:** the user can edit and update the selected task by locating it using its UUID.  
+3.3. **Delete Task:** the user can delete the desired task by locating it using its UUID.
+3.4. **View Existing Tasks:** the user can view registered tasks from a specific category, as chosen in **mainMenu()**. This functionality allows viewing all the data associated with each registered task.  
+
+4. **Data Persistence:** data simulation of a database is achieved using in-memory lists (ArrayList).
+
+## ▶️ Getting Started
+
+
+
+## 🚩 Future Improvements
+
