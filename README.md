@@ -2,7 +2,7 @@
 
 ## Introduction
 AdaTask is a console-based task manager for work, study, or personal tasks. It allows users to create, edit, and remove tasks, or view all listed tasks in a specific category.
-This project was developed by me as a final module assignment for the **<dev>ª** course, by [Ada Tech](https://ada.tech/) in partnership with [B3](https://www.b3.com.br/pt_br/para-voce), and is still under development for further improvements.
+This project was developed by me as a final module assignment for the **\<dev\>ª** course, by [Ada Tech](https://ada.tech/) in partnership with [B3](https://www.b3.com.br/pt_br/para-voce), and is still under development for further improvements.
 
 ## 💻 Prerequisites and Technologies Used in the Project
 For this project, the IntelliJ IDE was used, along with the following languages and technologies:
@@ -59,4 +59,4 @@ AdaTask is currently in its first version. Looking ahead, several new features a
 - Test development.
 
 ## 🙋🏻‍♀️ The Author
-Hi, I'm Ana Clara Barbeta, a Full Stack Developer based in São Paulo - SP, Brazil! I'm currently enrolled in the <dev>ª course offered by Ada Tech in partnership with B3. If you wish to get in touch, please view my [LinkedIn](https://www.linkedin.com/in/anaclara-barbeta/) profile or send an email to aclara.bvicente@gmail.com.
+Hi, I'm Ana Clara Barbeta, a Full Stack Developer based in São Paulo - SP, Brazil! I'm currently enrolled in the \<dev\>ª course offered by Ada Tech in partnership with B3. If you wish to get in touch, please view my [LinkedIn](https://www.linkedin.com/in/anaclara-barbeta/) profile or send an email to aclara.bvicente@gmail.com.
