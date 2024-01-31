@@ -3,6 +3,7 @@ package org.application.domain;
 import org.application.domain.enums.TaskPriority;
 import org.application.domain.enums.TaskStatus;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.UUID;
@@ -10,22 +11,18 @@ import java.util.UUID;
 // TODO: ver boas práticas de valor padrão para updatedAt no Java
 
 public class BaseTask {
-    private String id;
+    private String id = UUID.randomUUID().toString();
     private String taskTitle;
     private String taskDescription;
-    private LocalDateTime createdAt;
-    private LocalDateTime updatedAt;
-    private TaskStatus taskStatus;
-    private Date dueDate;
+    private LocalDateTime createdAt = LocalDateTime.now();
+    private LocalDateTime updatedAt = LocalDateTime.now();
+    private TaskStatus taskStatus = TaskStatus.PENDING;
+    private LocalDate dueDate;
     private TaskPriority taskPriority;
 
-    public BaseTask(String id, String taskTitle, String taskDescription, LocalDateTime createdAt, LocalDateTime updatedAt, TaskStatus taskStatus, Date dueDate, TaskPriority taskPriority) {
-        this.id = UUID.randomUUID().toString();
+    public BaseTask(String taskTitle, String taskDescription, LocalDate dueDate, TaskPriority taskPriority) {
         this.taskTitle = taskTitle;
         this.taskDescription = taskDescription;
-        this.createdAt = LocalDateTime.now();
-        this.updatedAt = null;
-        this.taskStatus = taskStatus;
         this.dueDate = dueDate;
         this.taskPriority = taskPriority;
     }
@@ -70,11 +67,11 @@ public class BaseTask {
         this.taskStatus = taskStatus;
     }
 
-    public Date getDueDate() {
+    public LocalDate getDueDate() {
         return dueDate;
     }
 
-    public void setDueDate(Date dueDate) {
+    public void setDueDate(LocalDate dueDate) {
         this.dueDate = dueDate;
     }
 
@@ -86,9 +83,9 @@ public class BaseTask {
         this.taskPriority = taskPriority;
     }
 
-    @Override
-    public String toString() {
-        return (
+
+    public void printTask() {
+        System.out.println(
                 "\n ***** TASK ***** \n" +
                 "Task title: " + taskTitle + "\n" +
                 "Description: " + taskDescription + "\n" +
