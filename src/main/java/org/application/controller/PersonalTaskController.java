@@ -1,17 +1,14 @@
 package org.application.controller;
 
-import org.application.domain.BaseTask;
 import org.application.domain.PersonalTask;
 import org.application.domain.enums.PersonalTaskCategory;
 import org.application.domain.enums.TaskPriority;
 import org.application.domain.enums.TaskStatus;
 import org.application.service.TaskService;
 
-import java.awt.*;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Scanner;
-import java.util.UUID;
 
 public class PersonalTaskController<T extends PersonalTask> {
     private TaskService<T, PersonalTask> service = new TaskService<>();
@@ -21,46 +18,43 @@ public class PersonalTaskController<T extends PersonalTask> {
         while(run) {
             Scanner input = new Scanner(System.in);
 
-            System.out.println("***** PERSONAL TASKS ***** \n");
-            System.out.println("Select the option to choose an action or type 0 to go back to main menu: \n");
+            System.out.println("\n***** PERSONAL TASKS ***** \n");
+            System.out.println("Select the option to choose an action: \n");
             System.out.println("1. Create task");
             System.out.println("2. See all tasks in category");
             System.out.println("3. Edit task");
             System.out.println("4. Delete task");
+            System.out.println("0. Exit");
 
             int option = input.nextInt();
-            chooseOption(option);
+            run = chooseOption(option);
+
         }
     }
 
-    public void chooseOption(int option) {
-        boolean run;
-
+    public boolean chooseOption(int option) {
 
         switch (option){
             case 1:
                 createPersonalTask();
-                break;
+                return true;
             case 2:
                 listAllPersonalTasks();
-                break;
+                return true;
             case 3:
                 editPersonalTask();
-                break;
+                return true;
             case 4:
                 deletePersonalTask();
-                break;
-            case 0:
-                run = false;
-                break;
+                return true;
             default:
-                System.out.println("Invalid Option. Please, try again.");
+                return false;
         }
     }
 
     public void createPersonalTask(){
         Scanner input = new Scanner(System.in);
-        System.out.println("***** Create new personal task ***** \n");
+        System.out.println("\n***** Create new personal task ***** \n");
 
         System.out.println("Type the task title:");
         String taskTitle = input.nextLine();
@@ -126,10 +120,8 @@ public class PersonalTaskController<T extends PersonalTask> {
         updatedTask.setTaskStatus(status);
 
 
-        service.updateTask((T) updatedTask);
+        service.updateTask(updatedTask);
         System.out.println("\n***** Personal task updated successfully! *****\n");
-
-
     }
 
     public void listAllPersonalTasks(){

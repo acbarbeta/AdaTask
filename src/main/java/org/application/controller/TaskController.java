@@ -19,37 +19,36 @@ public class TaskController<T extends BaseTask> {
             Scanner input = new Scanner(System.in);
 
             System.out.println("***** ADA TASK *****");
-            System.out.println("Welcome to Ada Task! \nPlease, type the option that corresponds to the type of task you want to manage or type 0 to exit:\n");
+            System.out.println("Welcome to Ada Task! \nPlease, type the option that corresponds to the type of task you want to manage:\n");
             System.out.println("1. Personal task");
             System.out.println("2. Study tasks");
             System.out.println("3. Work task");
+            System.out.println("0. Exit");
 
             int option = input.nextInt();
-            selectGeneralTaskCategory(option);
+            run = selectGeneralTaskCategory(option);
         }
     }
 
-    public void selectGeneralTaskCategory(int option) {
+    public boolean selectGeneralTaskCategory(int option) {
         GeneralTaskCategory taskCategory = null;
-        boolean run;
 
         switch (option){
             case 1:
                 taskCategory = GeneralTaskCategory.PERSONAL;
                 callPersonalTaskController();
-                break;
+                return true;
             case 2:
                 taskCategory = GeneralTaskCategory.STUDY;
                 callStudyTaskController();
-                break;
+                return true;
             case 3:
                 taskCategory = GeneralTaskCategory.WORK;
                 callWorkTaskController();
-                break;
+                return true;
             default:
                 System.out.println("\n***** Exitting application *****");
-                run = false;
-                break;
+                return false;
         }
     }
 

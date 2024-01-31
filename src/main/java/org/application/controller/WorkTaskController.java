@@ -1,15 +1,16 @@
 package org.application.controller;
 
-import org.application.domain.BaseTask;
-import org.application.domain.StudyTask;
+
 import org.application.domain.WorkTask;
 import org.application.domain.enums.TaskPriority;
+import org.application.domain.enums.TaskStatus;
 import org.application.service.TaskService;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Scanner;
 
-public class WorkTaskController<T extends BaseTask> {
+public class WorkTaskController<T extends WorkTask> {
 
     private TaskService<T, WorkTask> service = new TaskService<>();
 
@@ -19,69 +20,52 @@ public class WorkTaskController<T extends BaseTask> {
             Scanner input = new Scanner(System.in);
 
             System.out.println("***** WORK TASKS *****");
-            System.out.println("Select the option to choose an action or type 0 to go back to main menu: \n");
-
+            System.out.println("Select the option to choose an action: \n");
             System.out.println("1. Create task");
             System.out.println("2. See all tasks in category");
             System.out.println("3. Edit task");
             System.out.println("4. Delete task");
+            System.out.println("0. Exit");
 
             int option = input.nextInt();
-            chooseOption(option);
+            run = chooseOption(option);
         }
     }
 
-    public void chooseOption(int option) {
+    public boolean chooseOption(int option) {
         Scanner input = new Scanner(System.in);
         boolean run;
 
 
         switch (option){
             case 1:
-                System.out.println("Type the task title: \n");
-                String taskTitle = input.nextLine();
-                System.out.println("Type the task description: \n");
-                String taskDescription = input.nextLine();
-                System.out.println("To set the due date, please type the following infos: \n");
-                System.out.println("Year of due date: YYYY");
-                int year = input.nextInt();
-                System.out.println("Month of due date: MM");
-                int month = input.nextInt();
-                System.out.println("Day of due date: DD");
-                int day = input.nextInt();
-                LocalDate dueDate = LocalDate.of(year, month, day);
-                System.out.println("Please, choose task priority: ");
-                TaskPriority priority = selectTaskPriority();
-                BaseTask task = new BaseTask(taskTitle, taskDescription, dueDate, priority);
-                service.createTask((T) task);
-                break;
+                createWorkTask();
+                return true;
             case 2:
-                service.findAll();
-                break;
+                listAllWorkTasks();
+                return true;
             case 3:
-                System.out.println("Digite o UUID da task que deseja editar: ");
-
-                break;
+                editWorkTask();
+                return true;
             case 4:
-                break;
-            case 0:
-                run = false;
+                deleteWorkTask();
+                return true;
             default:
-                System.out.println("Invalid Option. Please, try again.");
+                return false;
         }
     }
 
     public void createWorkTask(){
         Scanner input = new Scanner(System.in);
-        System.out.println("***** Create new personal task *****");
+        System.out.println("\n***** Create new work task *****\n");
 
         System.out.println("Type the task title:");
         String taskTitle = input.nextLine();
 
-        System.out.println("Type the task description:");
+        System.out.println("\nType the task description:");
         String taskDescription = input.nextLine();
 
-        System.out.println("To set the due date, please type the following infos:");
+        System.out.println("\nTo set the due date, please type the following infos:");
         System.out.println("Year of due date: YYYY");
         int year = input.nextInt();
         System.out.println("Month of due date: MM");
@@ -91,18 +75,83 @@ public class WorkTaskController<T extends BaseTask> {
         input.nextLine();
         LocalDate dueDate = LocalDate.of(year, month, day);
 
-        System.out.println("Type the task project: ");
+        System.out.println("\nType the task project: ");
         String project = input.nextLine();
 
-        System.out.println("Type the task project: ");
+        System.out.println("\nType the task client: ");
         String client = input.nextLine();
 
-        System.out.println("Please, choose task priority: ");
+        System.out.println("\nPlease, choose task priority: ");
         TaskPriority priority = selectTaskPriority();
+
         WorkTask task = new WorkTask(taskTitle, taskDescription, dueDate, priority, project, client);
         service.createTask((T) task);
-        System.out.println("***** Personal task created successfully! *****");
+        System.out.println("***** Work task created successfully! *****");
     }
+
+    public void editWorkTask(){
+        Scanner input = new Scanner(System.in);
+        System.out.println("\n***** Edit existing work task *****\n");
+
+        System.out.println("Type the UUID of the task you want to edit: ");
+        String taskId = input.nextLine();
+        T updatedTask = service.findById(taskId);
+
+        System.out.println("\nType the new task title:");
+        updatedTask.setTaskTitle(input.nextLine());
+
+        System.out.println("\nType the new task description:");
+        updatedTask.setTaskDescription(input.nextLine());
+
+        System.out.println("\nTo set the new due date, please type the following infos:");
+        System.out.println("Year of new due date: YYYY");
+        int year = input.nextInt();
+        System.out.println("Month of new due date: MM");
+        int month = input.nextInt();
+        System.out.println("Day of new due date: DD");
+        int day = input.nextInt();
+        input.nextLine();
+        updatedTask.setDueDate(LocalDate.of(year, month, day));
+
+        System.out.println("\nType the new task project: ");
+        updatedTask.setProject(input.nextLine());
+
+        System.out.println("\nType the new task client: ");
+        updatedTask.setClient(input.nextLine());
+
+
+        updatedTask.setUpdatedAt(LocalDateTime.now());
+
+        System.out.println("\nPlease, choose task priority: ");
+        TaskPriority priority = selectTaskPriority();
+        updatedTask.setTaskPriority(priority);
+
+        TaskStatus status = selectTaskStatus();
+        updatedTask.setTaskStatus(status);
+
+
+        service.updateTask(updatedTask);
+        System.out.println("\n***** Work task updated successfully! *****\n");
+    }
+
+    public void listAllWorkTasks(){
+        System.out.println("\n***** Work Tasks *****\n");
+        service.findAll();
+    }
+
+    public void deleteWorkTask(){
+        Scanner input = new Scanner(System.in);
+        System.out.println("\n***** Delete existing work task *****\n");
+
+        System.out.println("Type the UUID of the task you want to delete: ");
+        String taskId = input.nextLine();
+        T taskToDelete = service.findById(taskId);
+        service.deleteTask(taskToDelete);
+        System.out.println("\n***** Work task deleted successfully! *****\n");
+
+
+    }
+
     public TaskPriority selectTaskPriority() {
         System.out.println("Type: \n");
         System.out.println("1. LOW priority \n");
@@ -131,5 +180,33 @@ public class WorkTaskController<T extends BaseTask> {
                 throw new IllegalArgumentException("Invalid option");
         }
         return priority;
+    }
+
+    public TaskStatus selectTaskStatus() {
+        Scanner input = new Scanner(System.in);
+
+        System.out.println("\nType the number of the task status: ");
+        System.out.println("1- Pending");
+        System.out.println("2- In Progress");
+        System.out.println("3- Done");
+
+
+        int option = input.nextInt();
+        TaskStatus status;
+
+        switch (option){
+            case 1:
+                status = TaskStatus.PENDING;
+                break;
+            case 2:
+                status = TaskStatus.IN_PROGRESS;
+                break;
+            case 3:
+                status = TaskStatus.DONE;
+                break;
+            default:
+                throw new IllegalArgumentException("Invalid option");
+        }
+        return status;
     }
 }
