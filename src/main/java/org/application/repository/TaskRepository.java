@@ -6,6 +6,8 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
+// TODO: melhorar textos printados
+
 public class TaskRepository<T extends BaseTask, S> implements Repository<T, S>{
     private List<T> tasks;
 
