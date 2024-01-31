@@ -3,14 +3,15 @@ package org.application.domain;
 import org.application.domain.enums.TaskPriority;
 import org.application.domain.enums.TaskStatus;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Date;
 
 public class StudyTask extends BaseTask {
     private String subject;
 
-    public StudyTask(String id, String taskTitle, String taskDescription, LocalDateTime createdAt, LocalDateTime updatedAt, TaskStatus taskStatus, Date dueDate, TaskPriority taskPriority, String subject) {
-        super(id, taskTitle, taskDescription, createdAt, updatedAt, taskStatus, dueDate, taskPriority);
+    public StudyTask(String taskTitle, String taskDescription, LocalDate dueDate, TaskPriority taskPriority, String subject) {
+        super(taskTitle, taskDescription, dueDate, taskPriority);
         this.subject = subject;
     }
 
@@ -22,8 +23,9 @@ public class StudyTask extends BaseTask {
         this.subject = subject;
     }
 
-    public String toString() {
-        return (
+    @Override
+    public void printTask() {
+        System.out.println(
                 "\n ***** PERSONAL TASK ***** \n" +
                         "Task title: " + super.getTaskTitle() + "\n" +
                         "Description: " + super.getTaskDescription() + "\n" +
