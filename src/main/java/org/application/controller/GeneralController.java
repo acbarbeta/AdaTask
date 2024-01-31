@@ -1,7 +1,6 @@
 package org.application.controller;
 
 import org.application.domain.BaseTask;
-import org.application.domain.WorkTask;
 import org.application.domain.enums.TaskPriority;
 import org.application.domain.enums.TaskStatus;
 import org.application.service.TaskService;
