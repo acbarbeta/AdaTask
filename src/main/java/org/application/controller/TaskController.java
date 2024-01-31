@@ -47,7 +47,9 @@ public class TaskController<T extends BaseTask> {
                 callWorkTaskController();
                 break;
             default:
+                System.out.println("\n***** Exitting application *****");
                 run = false;
+                break;
         }
     }
 
