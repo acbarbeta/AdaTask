@@ -2,6 +2,7 @@ package org.application.repository;
 
 import org.application.domain.BaseTask;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,6 +21,7 @@ public class TaskRepository<T extends BaseTask, S> implements Repository<T, S>{
     @Override
     public void updateTask(T task) {
         int arrayIndex = findIndexById(task.getId());
+        task.setUpdatedAt(LocalDateTime.now());
         tasks.set(arrayIndex, task); // .set() allows you to modify an element
     }
 
