@@ -5,6 +5,7 @@ import org.application.domain.BaseTask;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 // TODO: melhorar textos printados
 
@@ -43,7 +44,7 @@ public class TaskRepository<T extends BaseTask, S> implements Repository<T, S>{
         return tasks;
     }
 
-    @Override
+
     public T findById(String id) {
         Integer arrayIndex = findIndexById(id);
         if (arrayIndex == -1) {
@@ -54,8 +55,9 @@ public class TaskRepository<T extends BaseTask, S> implements Repository<T, S>{
 
     private int findIndexById(String id) {
         int index = -1;
-        for(int i=0; i < tasks.size();i++){
-            if(tasks.get(i).equals(id)){
+
+        for(int i=0; i < tasks.size(); i++){
+            if(tasks.get(i).getId().equals(id)){
                 return i;
             }
         }
