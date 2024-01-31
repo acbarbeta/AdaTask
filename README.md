@@ -28,3 +28,7 @@ The application is organized into packages, including:
 - `Service`: Contains the application logic, including task handling operations, and interacts with the Repository layer to perform data operations.
 
 ## Application flow
+1. **Application Initialization:** the *Main* class serves as the point of interaction between the user and the application. It presents a simple interface (**mainMenu()**), provided by the *controller*, allowing the user to choose the type of task they wish to manage: study, work, or personal.
+2. **Action Selection:** after choosing the type of task to manage, the user is presented with a new interface that displays a menu of **possible actions to select**.
+3. **Possible actions:**  
+3.1. aa
