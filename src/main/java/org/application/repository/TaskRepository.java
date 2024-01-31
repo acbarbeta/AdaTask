@@ -25,12 +25,18 @@ public class TaskRepository<T extends BaseTask, S> implements Repository<T, S>{
 
     @Override
     public void deleteTask(T task) {
-
+        int arrayIndex = findIndexById(task.getId());
+        if(arrayIndex == -1) {
+            System.out.println("Not found.");
+        } else {
+            tasks.remove(task);
+            System.out.println("Task deleted.");
+        }
     }
 
     @Override
     public List<T> findAll() {
-        return null;
+        return tasks;
     }
 
     @Override
