@@ -75,7 +75,7 @@ public class GeneralController<T extends BaseTask> {
     public void deleteTask() {
         Scanner input = new Scanner(System.in);
 
-        System.out.println("Type the UUID of the task you want to delete: ");
+        System.out.println("Please type the UUID of the task you wish to delete: ");
         String taskId = input.nextLine();
         T taskToDelete = service.findById(taskId);
         service.deleteTask(taskToDelete);

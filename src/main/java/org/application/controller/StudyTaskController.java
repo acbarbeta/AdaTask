@@ -19,7 +19,7 @@ public class StudyTaskController<T extends StudyTask> extends GeneralController 
             Scanner input = new Scanner(System.in);
 
             System.out.println("\n***** STUDY TASKS *****\n");
-            System.out.println("Select the option to choose an action: \n");
+            System.out.println("Please select an option to proceed with an action: \n");
             System.out.println("1. Create task");
             System.out.println("2. See all tasks in category");
             System.out.println("3. Edit task");
@@ -65,7 +65,7 @@ public class StudyTaskController<T extends StudyTask> extends GeneralController 
         System.out.println("\nType the task description:");
         String taskDescription = input.nextLine();
 
-        System.out.println("\nTo set the due date, please type the following infos:");
+        System.out.println("\nTo set the due date, please enter the following information:");
         System.out.println("Year of due date: YYYY");
         int year = input.nextInt();
         System.out.println("Month of due date: MM");
@@ -84,7 +84,7 @@ public class StudyTaskController<T extends StudyTask> extends GeneralController 
         StudyTask task = new StudyTask(taskTitle, taskDescription, dueDate, priority, subject);
         service.createTask((T) task);
 
-        System.out.println("***** Study task created successfully! *****");
+        System.out.println("***** Your study task has been created successfully! *****");
     }
 
     public void editStudyTask(){
@@ -101,7 +101,7 @@ public class StudyTaskController<T extends StudyTask> extends GeneralController 
         System.out.println("\nType the new task description:");
         updatedTask.setTaskDescription(input.nextLine());
 
-        System.out.println("\nTo set the due date, please type the following infos:");
+        System.out.println("\nTo set the new due date, please enter the following information:");
         System.out.println("Year of due date: YYYY");
         int year = input.nextInt();
         System.out.println("Month of due date: MM");
@@ -126,7 +126,7 @@ public class StudyTaskController<T extends StudyTask> extends GeneralController 
         updatedTask.setTaskStatus(status);
 
         service.updateTask(updatedTask);
-        System.out.println("***** Study task updated successfully! *****");
+        System.out.println("***** Your study task has been updated successfully! *****");
 
     }
 
@@ -141,10 +141,10 @@ public class StudyTaskController<T extends StudyTask> extends GeneralController 
         Scanner input = new Scanner(System.in);
         System.out.println("\n***** Delete existing study task *****\n");
 
-        System.out.println("Type the UUID of the task you want to delete: ");
+        System.out.println("Please type the UUID of the task you wish to delete:");
         String taskId = input.nextLine();
         T taskToDelete = service.findById(taskId);
         service.deleteTask(taskToDelete);
-        System.out.println("\n***** Study task deleted successfully! *****\n");
+        System.out.println("\n***** Your study task has been deleted successfully! *****\n");
     }
 }

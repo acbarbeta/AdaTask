@@ -19,7 +19,7 @@ public class PersonalTaskController<T extends PersonalTask>  extends GeneralCont
             Scanner input = new Scanner(System.in);
 
             System.out.println("\n***** PERSONAL TASKS ***** \n");
-            System.out.println("Select the option to choose an action: \n");
+            System.out.println("Please select an option to proceed with an action: \n");
             System.out.println("1. Create task");
             System.out.println("2. See all tasks in category");
             System.out.println("3. Edit task");
@@ -62,7 +62,7 @@ public class PersonalTaskController<T extends PersonalTask>  extends GeneralCont
         System.out.println("\nType the task description:");
         String taskDescription = input.nextLine();
 
-        System.out.println("\nTo set the due date, please type the following infos:");
+        System.out.println("\nTo set the due date, please enter the following information:");
         System.out.println("Year of due date: YYYY");
         int year = input.nextInt();
         System.out.println("Month of due date: MM");
@@ -80,7 +80,7 @@ public class PersonalTaskController<T extends PersonalTask>  extends GeneralCont
 
         PersonalTask task = new PersonalTask(taskTitle, taskDescription, dueDate, priority, category);
         service.createTask((T) task);
-        System.out.println("\n***** Personal task created successfully! ***** \n");
+        System.out.println("\n***** Your personal task has been created successfully! ***** \n");
     }
 
     public void editPersonalTask(){
@@ -97,7 +97,7 @@ public class PersonalTaskController<T extends PersonalTask>  extends GeneralCont
         System.out.println("\nType the new task description:");
         updatedTask.setTaskDescription(input.nextLine());
 
-        System.out.println("\nTo set the new due date, please type the following infos:");
+        System.out.println("\nTo set the new due date, please enter the following information:");
         System.out.println("Year of new due date: YYYY");
         int year = input.nextInt();
         System.out.println("Month of new due date: MM");
@@ -121,7 +121,7 @@ public class PersonalTaskController<T extends PersonalTask>  extends GeneralCont
 
 
         service.updateTask(updatedTask);
-        System.out.println("\n***** Personal task updated successfully! *****\n");
+        System.out.println("\n***** Your personal task has been updated successfully! *****\n");
     }
 
     @Override
@@ -135,11 +135,11 @@ public class PersonalTaskController<T extends PersonalTask>  extends GeneralCont
         Scanner input = new Scanner(System.in);
         System.out.println("\n***** Delete existing personal task *****\n");
 
-        System.out.println("Type the UUID of the task you want to delete: ");
+        System.out.println("Please type the UUID of the task you wish to delete:");
         String taskId = input.nextLine();
         T taskToDelete = service.findById(taskId);
         service.deleteTask(taskToDelete);
-        System.out.println("\n***** Personal task deleted successfully! *****\n");
+        System.out.println("\n***** Your personal task has been deleted successfully! *****\n");
 
 
     }
@@ -147,7 +147,7 @@ public class PersonalTaskController<T extends PersonalTask>  extends GeneralCont
     public PersonalTaskCategory choosePersonalTaskCategory() {
         Scanner input = new Scanner(System.in);
 
-        System.out.println("\nType the number of the category: ");
+        System.out.println("\nPlease type the number corresponding to the category: ");
         System.out.println("1- Health");
         System.out.println("2- Shopping");
         System.out.println("3- Leisure");

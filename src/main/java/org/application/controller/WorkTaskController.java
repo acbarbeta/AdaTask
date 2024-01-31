@@ -20,7 +20,7 @@ public class WorkTaskController<T extends WorkTask> extends GeneralController{
             Scanner input = new Scanner(System.in);
 
             System.out.println("***** WORK TASKS *****");
-            System.out.println("Select the option to choose an action: \n");
+            System.out.println("Please select an option to proceed with an action: \n");
             System.out.println("1. Create task");
             System.out.println("2. See all tasks in category");
             System.out.println("3. Edit task");
@@ -65,7 +65,7 @@ public class WorkTaskController<T extends WorkTask> extends GeneralController{
         System.out.println("\nType the task description:");
         String taskDescription = input.nextLine();
 
-        System.out.println("\nTo set the due date, please type the following infos:");
+        System.out.println("\nTo set the due date, please enter the following information:");
         System.out.println("Year of due date: YYYY");
         int year = input.nextInt();
         System.out.println("Month of due date: MM");
@@ -86,7 +86,7 @@ public class WorkTaskController<T extends WorkTask> extends GeneralController{
 
         WorkTask task = new WorkTask(taskTitle, taskDescription, dueDate, priority, project, client);
         service.createTask((T) task);
-        System.out.println("***** Work task created successfully! *****");
+        System.out.println("***** Your work task has been created successfully! *****");
     }
 
     public void editWorkTask(){
@@ -103,7 +103,7 @@ public class WorkTaskController<T extends WorkTask> extends GeneralController{
         System.out.println("\nType the new task description:");
         updatedTask.setTaskDescription(input.nextLine());
 
-        System.out.println("\nTo set the new due date, please type the following infos:");
+        System.out.println("\nTo set the new due date, please enter the following information:");
         System.out.println("Year of new due date: YYYY");
         int year = input.nextInt();
         System.out.println("Month of new due date: MM");
@@ -131,7 +131,7 @@ public class WorkTaskController<T extends WorkTask> extends GeneralController{
 
 
         service.updateTask(updatedTask);
-        System.out.println("\n***** Work task updated successfully! *****\n");
+        System.out.println("\n***** Your personal task has been updated successfully! *****\n");
     }
 
 
@@ -146,10 +146,10 @@ public class WorkTaskController<T extends WorkTask> extends GeneralController{
         Scanner input = new Scanner(System.in);
         System.out.println("\n***** Delete existing work task *****\n");
 
-        System.out.println("Type the UUID of the task you want to delete: ");
+        System.out.println("Please type the UUID of the task you wish to delete:");
         String taskId = input.nextLine();
         T taskToDelete = service.findById(taskId);
         service.deleteTask(taskToDelete);
-        System.out.println("\n***** Work task deleted successfully! *****\n");
+        System.out.println("\n***** Your personal task has been deleted successfully! *****\n");
     }
 }
