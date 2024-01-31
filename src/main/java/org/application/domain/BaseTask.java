@@ -12,7 +12,7 @@ public class BaseTask {
     private String taskTitle;
     private String taskDescription;
     private LocalDateTime createdAt = LocalDateTime.now();
-    private LocalDateTime updatedAt = LocalDateTime.now();
+    private LocalDateTime updatedAt = null;
     private TaskStatus taskStatus = TaskStatus.PENDING;
     private LocalDate dueDate;
     private TaskPriority taskPriority;
